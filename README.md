@@ -75,7 +75,7 @@ function MyComponent() {
   - `proofChainContract.records(formattedHash)`用來驗證
 
 - `formattedHash`是在你把檔案 hash 過後前面要加上`0x`才能上傳，如下：
-- `const formattedHash = '0x' + fileHash;`
+  - `const formattedHash = '0x' + fileHash;`
 
 ---
 
