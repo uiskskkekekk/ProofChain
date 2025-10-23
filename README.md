@@ -68,10 +68,12 @@ function MyComponent() {
 #### 4. proofChainContract 用法
 
 - `proofChainContract`是智能合約裡面的功能，有以下兩個用法
-  -- `proofChainContract.storeProof(formattedHash)`用來上傳
-  -- `proofChainContract.records(formattedHash)`用來驗證
-  --- `formattedHash`是在你把檔案 hash 過後前面要加上`0x`才能上傳，如下：
-  --- `const formattedHash = '0x' + fileHash;`
+
+- `proofChainContract.storeProof(formattedHash)`用來上傳
+- `proofChainContract.records(formattedHash)`用來驗證
+
+- `formattedHash`是在你把檔案 hash 過後前面要加上`0x`才能上傳，如下：
+- `const formattedHash = '0x' + fileHash;`
 
 ### Install dependencies
 
