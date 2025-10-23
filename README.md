@@ -1,3 +1,5 @@
+### File structure
+
 ```
 /proofchain
 ├── src/
@@ -15,4 +17,16 @@
 │
 ├── package.json
 └── vite.config.js
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
 ```
