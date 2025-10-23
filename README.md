@@ -22,6 +22,8 @@
 └── vite.config.js
 ```
 
+---
+
 ### 前端使用 BlockchainContext
 
 `BlockchainContext` 提供全域 React context，管理錢包連線、合約實例與連線狀態。主要重點是 `currentAccount`，它儲存已連接的錢包地址。
@@ -69,11 +71,13 @@ function MyComponent() {
 
 - `proofChainContract`是智能合約裡面的功能，有以下兩個用法
 
-- `proofChainContract.storeProof(formattedHash)`用來上傳
-- `proofChainContract.records(formattedHash)`用來驗證
+  - `proofChainContract.storeProof(formattedHash)`用來上傳
+  - `proofChainContract.records(formattedHash)`用來驗證
 
 - `formattedHash`是在你把檔案 hash 過後前面要加上`0x`才能上傳，如下：
 - `const formattedHash = '0x' + fileHash;`
+
+---
 
 ### Install dependencies
 
