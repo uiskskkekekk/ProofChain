@@ -58,18 +58,20 @@ function MyComponent() {
 }
 ```
 
-#### 3. Context 提供哪些內容？
+#### 3. Context 提供內容
 
 - `currentAccount`：已連接的錢包地址（字串或 null）
 - `connectWallet()`：觸發 MetaMask 連線的函式
 - `proofChainContract`：Ethers.js 合約實例（可呼叫合約方法）
 - `loading`：連線/載入狀態布林值
 
-#### 4. 常見用法
+#### 4. proofChainContract 用法
 
-- 呼叫 `connectWallet()` 連接 MetaMask 並取得使用者帳號
-- 用 `proofChainContract` 呼叫智能合約方法（如存證、驗證）
-- 用 `currentAccount` 顯示錢包狀態或做權限判斷
+- `proofChainContract`是智能合約裡面的功能，有以下兩個用法
+  -- `proofChainContract.storeProof(formattedHash)`用來上傳
+  -- `proofChainContract.records(formattedHash)`用來驗證
+  --- `formattedHash`是在你把檔案 hash 過後前面要加上`0x`才能上傳，如下：
+  --- `const formattedHash = '0x' + fileHash;`
 
 ### Install dependencies
 
