@@ -4,10 +4,11 @@ import { useBlockchain } from "../context/BlockchainContext";
 import "../App.css";
 
 export default function Notarize() {
-  const { setPdfHash, connectWallet, currentAccount } = useBlockchain();
+  const {connectWallet, currentAccount } = useBlockchain();
   const [fileName, setFileName] = useState("");
   const [hashValue, setHashValue] = useState("");
-  const [fileUrl, setFileUrl] = useState(""); // 用來存 PDF URL
+  const [fileUrl, setFileUrl] = useState("");
+
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -16,12 +17,11 @@ export default function Notarize() {
     setFileName(file.name);
     const hash = await hashFileSHA256(file);
     setHashValue(hash);
-    setPdfHash(hash);
 
-    // 生成 PDF 的 URL
     const url = URL.createObjectURL(file);
     setFileUrl(url);
-  };
+};
+
 
   return (
     <div className="app-container">
@@ -50,8 +50,6 @@ export default function Notarize() {
         ) : (
           <p className="file-name">🦊 已連線：{currentAccount}</p>
         )}
-
-        {/* PDF 預覽 */}
         {fileUrl && (
           <iframe
             src={fileUrl}
