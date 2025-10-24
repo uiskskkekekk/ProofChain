@@ -1,1 +1,8 @@
-// 這裡是主要佈局 看你設計的component要怎麼放
+import React from "react";
+import Notarize from "./components/Notarize";
+
+function App() {
+  return <Notarize />;
+}
+
+export default App;
