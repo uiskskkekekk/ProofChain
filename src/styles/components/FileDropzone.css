@@ -1,0 +1,66 @@
+.dropzone-wrapper {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed color-mix(in srgb, var(--border) 80%, #FFFFFF 20%);
+  background-color: var(--bg);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  transition: all 0.2s ease;
+}
+.dropzone-wrapper.drag-active,
+.dropzone-wrapper:hover {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--bg) 95%, #FFFFFF 5%);
+}
+.dropzone-wrapper.dropzone-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.dropzone-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: var(--primary);
+}
+.dropzone-content h3 {
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0 0;
+}
+.dropzone-content p {
+  color: var(--text-alt);
+  font-size: 1.1rem;
+  margin: 0;
+}
+.browse-files-btn {
+  background-color: var(--primary-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+.browse-files-btn:hover {
+  filter: brightness(1.6);
+}
+.browse-files-btn:disabled {
+  background-color: var(--primary-alt);
+  color: var(--text-alt);
+  cursor: not-allowed;
+}

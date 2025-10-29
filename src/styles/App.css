@@ -1,0 +1,30 @@
+:root {
+  --bg: #101922;
+  --primary: #0052ff;
+  --primary-alt: #1e293b;
+  --surface: #0f172a;
+  --text: #FFFFFF;
+  --text-alt: #91a0b4;
+  --border: #1e293a;
+  --success: #10B981;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  flex-grow: 1;
+}

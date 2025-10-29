@@ -1,0 +1,186 @@
+.attest-container {
+  min-width: 60vw;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.attest-header {
+  width: 100%;
+}
+.attest-header h1 {
+  color: var(--text);
+  font-size: 2.5rem;
+  font-weight: 1000;
+  margin: 0 0 0.5rem 0;
+}
+.attest-header p {
+  color: var(--text-alt);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid #EF4444;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.error-message p {
+  color: #F87171;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.attestation-details {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.attestation-details.loading-hash {
+  padding: 2rem;
+  color: var(--text-alt);
+  text-align: center;
+}
+
+/* file detail */
+.file-info-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--primary-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.file-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: var(--text-alt);
+  flex-shrink: 0;
+}
+.file-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 5px;
+}
+.file-info .file-name {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.file-info .file-size {
+  color: var(--text-alt);
+  font-size: 0.9rem;
+}
+
+/* hash */
+.hash-display {
+  width: 100%;
+}
+.hash-display label {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 0.7rem 0.5rem;
+  display: block;
+}
+.hash-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+.hash-input-wrapper input[type="text"] {
+  flex-grow: 1;
+  background-color: var(--primary-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  color: color-mix(in srgb, var(--text-alt) 80%, #FFFFFF 20%);
+  font-family: monospace;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.copy-button {
+  flex-shrink: 0;
+  background-color: var(--primary-alt);
+  color: var(--text-alt);
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.copy-button:hover {
+  filter: brightness(1.6);
+  color: var(--text);
+}
+.hash-description {
+  color: var(--text-alt);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0.5rem;
+}
+
+/* attest button */
+.attest-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+}
+.attest-button-main {
+  width: auto;
+  background-color: var(--primary);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.attest-button-main ion-icon{
+  font-size: 1.5rem;
+}
+.attest-button-main:hover {
+  filter: brightness(1.6);
+}
+.attest-button-main:disabled {
+  background-color: var(--primary-alt);
+  color: var(--text-alt);
+  cursor: not-allowed;
+}
+.attest-helper-text {
+  color: var(--text-alt);
+  font-size: 0.9rem;
+  margin: 0;
+}

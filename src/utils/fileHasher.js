@@ -1,4 +1,3 @@
-// file hash function
 // src/utils/fileHasher.js
 export async function hashFileSHA256(file) {
   const arrayBuffer = await file.arrayBuffer();
