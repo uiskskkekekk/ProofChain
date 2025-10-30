@@ -1,7 +1,7 @@
 // src/pages/Verify.jsx
-
 import { useState } from 'react';
-import { FiAlertCircle, FiCheckCircle, FiCopy, FiXCircle } from 'react-icons/fi';
+import { FiAlertCircle, FiCopy } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import FileDropzone from '../components/FileDropzone.jsx';
 import { useBlockchain } from '../context/BlockchainContext.jsx';
 import { useFileHandler } from '../hooks/useFileHandler.jsx';
@@ -20,7 +20,7 @@ const Verify = () => {
   const [isTxLoading, setIsTxLoading] = useState(false);
   const [txError, setTxError] = useState("");
 
-  const [result, setResult] = useState(null); // null | { success: true, ... } | { success: false, ... }
+  const navigate = useNavigate();
 
   // --- BlockChain Verify ---
   const handleVerify = async () => {
@@ -31,26 +31,32 @@ const Verify = () => {
 
     setIsTxLoading(true);
     setTxError("");
-    setResult(null);
 
     try {
       const formattedHash = '0x' + fileHash;
       const storedRecord = await contract.records(formattedHash);
 
+      let resultData;
+
       if (storedRecord.timestamp === 0n) { // 0n 是 BigInt 的 0
-        setResult({
+        resultData = {
           success: false,
           status: 'notFound',
-          message: "This file's hash does not exist on the blockchain."
-        });
+          message: "This file's hash does not exist on the blockchain.",
+          hash: fileHash
+        };
       } else {
-        setResult({
+        resultData = {
           success: true,
           status: 'verified',
           timestamp: new Date(Number(storedRecord.timestamp) * 1000).toUTCString(),
-          owner: storedRecord.owner
-        });
+          owner: storedRecord.owner,
+          hash: fileHash
+        };
       }
+
+      navigate('/verify-result', { state: { result: resultData } });
+
     } catch (err) {
       console.error(err);
       setTxError("Verification Failed: Could not connect to the network. Please try again.");
@@ -87,7 +93,7 @@ const Verify = () => {
           <div className="verify-hash-display">
             <label>SHA-256 Hash</label>
             <div className="verify-hash-input-wrapper">
-              <input type="text" value={fileHash} readOnly />
+              <span>{fileHash}</span>
               <button onClick={copyToClipboard} className="copy-button">
                 <FiCopy />
               </button>
@@ -106,35 +112,12 @@ const Verify = () => {
         </div>
       )}
 
-      {/* --- 驗證結果顯示區 --- */}
+      {/* --- error --- */}
       <div className="verify-results">
         {error && (
           <div className="result-box error">
-            <FiAlertCircle />
+            <span><FiAlertCircle /></span>
             <p>{error}</p>
-          </div>
-        )}
-        
-        {result && result.success && (
-          <div className="result-box success">
-            <FiCheckCircle />
-            <div className="result-content">
-              <h4>File Verified Successfully</h4>
-              <p>
-                Attestation Date: {result.timestamp} <br />
-                Attested by: {result.owner}
-              </p>
-            </div>
-          </div>
-        )}
-
-        {result && !result.success && (
-          <div className="result-box not-found">
-            <FiXCircle />
-            <div className="result-content">
-              <h4>File Attestation Not Found</h4>
-              <p>{result.message}</p>
-            </div>
           </div>
         )}
       </div>

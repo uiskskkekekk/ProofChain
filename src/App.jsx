@@ -5,6 +5,7 @@ import Attest from './pages/Attest.jsx';
 import AttestSuccess from './pages/AttestSuccess.jsx';
 import Home from './pages/Home.jsx';
 import Verify from './pages/Verify.jsx';
+import VerifyResult from './pages/VerifyResult.jsx';
 import "./styles/App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/attest" element={<Attest />} />
           <Route path="/success/:txHash" element={<AttestSuccess />} />
           <Route path="/verify" element={<Verify />} />
+          <Route path="/verify-result" element={<VerifyResult />} />
         </Routes>
       </main>
       <Footer />

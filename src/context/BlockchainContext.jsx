@@ -1,13 +1,30 @@
 import { ethers } from 'ethers';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from '../utils/constants';
 
 const BlockchainContext = createContext();
 
+const SEPOLIA_RPC_URL = "https://ethereum-sepolia.publicnode.com";
+
 export const BlockchainProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState(null);
   const [proofChainContract, setProofChainContract] = useState(null);
+  const [readOnlyContract, setReadOnlyContract] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const initReadOnlyContract = async () => {
+      try {
+        const provider = new ethers.JsonRpcProvider(SEPOLIA_RPC_URL);
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
+        setReadOnlyContract(contract);
+        console.log("Read-only contract initialized.");
+      } catch (error) {
+        console.error("Failed to initialize read-only contract:", error);
+      }
+    };
+    initReadOnlyContract();
+  }, []);
 
   const connectWallet = async () => {
     try {
@@ -37,7 +54,8 @@ export const BlockchainProvider = ({ children }) => {
         loading,
         currentAccount,
         connectWallet,
-        proofChainContract // Needed by notarization and verification components
+        proofChainContract, // Needed by notarization and verification components
+        readOnlyContract
       }}
     >
       {children}

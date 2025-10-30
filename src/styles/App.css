@@ -7,6 +7,8 @@
   --text-alt: #91a0b4;
   --border: #1e293a;
   --success: #10B981;
+  --failed: #EF4444;
+  --alert: #F59E0B;
 }
 
 body {

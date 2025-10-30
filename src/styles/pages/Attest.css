@@ -105,35 +105,29 @@
 }
 .hash-input-wrapper {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: color-mix(in srgb, var(--bg) 95%, var(--text) 5%);
+  border: 1px solid var(--text-alt);
+  border-radius: 6px;
+  padding: 0.75rem;
 }
-.hash-input-wrapper input[type="text"] {
-  flex-grow: 1;
-  background-color: var(--primary-alt);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  color: color-mix(in srgb, var(--text-alt) 80%, #FFFFFF 20%);
-  font-family: monospace;
-  font-size: 0.9rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.hash-input-wrapper span{
+  color: var(--text);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  word-break: break-all;
+  margin-right: 1rem;
 }
 .copy-button {
-  flex-shrink: 0;
-  background-color: var(--primary-alt);
+  background: none;
+  border: none;
   color: var(--text-alt);
-  border: 1px solid var(--border);
-  padding: 0.75rem;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem;
 }
 .copy-button:hover {
-  filter: brightness(1.6);
   color: var(--text);
 }
 .hash-description {

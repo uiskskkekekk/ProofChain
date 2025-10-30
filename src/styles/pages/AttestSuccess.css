@@ -80,28 +80,28 @@
 .tx-id-wrapper {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  max-width: 100%;
-}
-.tx-id-wrapper strong {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.copy-btn {
-  background-color: var(--primary-alt);
-  color: var(--text-alt);
-  border: 1px solid var(--border);
+  justify-content: space-between;
+  background-color: color-mix(in srgb, var(--bg) 95%, var(--text) 5%);
+  border: 1px solid var(--text-alt);
+  border-radius: 6px;
   padding: 0.75rem;
-  border-radius: 8px;
+}
+
+.tx-id-wrapper span {
+  color: var(--text);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  word-break: break-all;
+  margin-right: 1rem;
+}
+.copy-button {
+  background: none;
+  border: none;
+  color: var(--text-alt);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  margin-left: 10px;
+  padding: 0.25rem;
 }
 .copy-btn:hover {
-  filter: brightness(1.6);
   color: var(--text);
 }
 

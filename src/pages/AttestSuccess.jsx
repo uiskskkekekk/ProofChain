@@ -29,7 +29,7 @@ const AttestSuccess = () => {
     <div className="success-container">
       <div className="success-card">
         
-        <FiCheckCircle className="success-icon" size={48} />
+        <FiCheckCircle className="success-icon" />
 
         <h1>File Attestation Confirmed</h1>
         <p className="success-subtitle">
@@ -53,8 +53,8 @@ const AttestSuccess = () => {
           <div className="detail-item">
             <span>Transaction ID</span>
             <div className="tx-id-wrapper">
-              <strong>{txHash}</strong>
-              <button onClick={() => copyToClipboard(txHash)} className="copy-btn">
+              <span>{txHash}</span>
+              <button onClick={() => copyToClipboard(txHash)} className="copy-button" title="Copy Hash">
                 <FiCopy />
               </button>
             </div>

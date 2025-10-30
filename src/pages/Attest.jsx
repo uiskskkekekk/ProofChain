@@ -101,7 +101,6 @@ const Attest = () => {
           
           {/* File information */}
           <div className="file-info-box">
-            {/* <FiFileText size={24} className="file-icon" /> */}
             <span className="file-icon"><FiFileText /></span>
             <div className="file-info">
               <span className="file-name">{file.name}</span>
@@ -113,8 +112,8 @@ const Attest = () => {
           <div className="hash-display">
             <label>File SHA-256 Hash</label>
             <div className="hash-input-wrapper">
-              <input type="text" value={fileHash} readOnly />
-              <button onClick={copyToClipboard} className="copy-button">
+              <span>{fileHash}</span>
+              <button onClick={copyToClipboard} className="copy-button" title='Copy Hash'>
                 <FiCopy />
               </button>
             </div>
