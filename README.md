@@ -1,92 +1,48 @@
-### File structure
+# ProofChain
 
-```
-/proofchain
-├── src/
-│   ├── components/
-│   │   ├── Notarize.jsx       # 「存證」功能 (包含上傳、Hash)
-│   │   └── Verify.jsx         # 「驗證」功能
+**Live Demo:** [**https://proofchain-9c0.pages.dev/**](https://proofchain-9c0.pages.dev/)
 
-│   ├── context/
-│   │   └── BlockchainContext.jsx      # 全局管理錢包、合約實例、連線狀態
-│
-│   ├── utils/                   # 工具函式
-│   │   ├── constants.js
-│   │   └── fileHasher.js      # 計算檔案 Hash 的函式
-│
-│   ├── App.css                  # 主要的 CSS 樣式表
-│   ├── App.jsx                  # 應用程式的主佈局
-│   └── main.jsx                 # 應用程式的入口點
-│
-├── package.json
-└── vite.config.js
-```
+ProofChain is a decentralized application (DApp) that allows users to calculate a unique digital fingerprint (hash) for any digital file and permanently record this fingerprint, along with a timestamp, on a public blockchain.
 
----
+This "attestation" process creates an immutable record, enabling anyone to verify the file's state at a specific time in the future—all without needing to upload the file itself or reveal its contents.
 
-### 前端使用 BlockchainContext
+![ProofChain Homepage](screenshot.png)
 
-`BlockchainContext` 提供全域 React context，管理錢包連線、合約實例與連線狀態。主要重點是 `currentAccount`，它儲存已連接的錢包地址。
+## Core Features
 
-#### 1. 用 Provider 包住你的 App
+- **File Attestation:** Create a permanent, timestamped proof-of-existence for any file on the blockchain.
+- **File Verification:** Check if a file has been previously attested and retrieve its original timestamp and owner's address.
+- **Local-First Processing:** Files are never uploaded. All hashing is done locally in the user's browser, ensuring complete privacy.
+- **Web3 Integration:** Connects to Web3 wallets like MetaMask for smart contract interaction.
+- **Decentralized:** Built on a public blockchain, ensuring data is tamper-proof and not controlled by any single entity.
 
-```jsx
-import { BlockchainProvider } from "./src/context/BlockchainContext";
+## How It Works
 
-function App() {
-  return <BlockchainProvider>{/* 你的 App 組件 */}</BlockchainProvider>;
-}
-```
+### 1. Attestation Flow
 
-#### 2. 在組件中取得區塊鏈功能
+1.  Navigate to the **"Attest"** page.
+2.  Drag and drop or select a file.
+3.  The app locally computes the file's `SHA-256` hash in your browser.
+4.  Click **"Attest"** and confirm the transaction in your wallet to write this hash to the blockchain.
 
-使用自訂 hook 取得錢包、帳號、合約狀態與方法：
+### 2. Verification Flow
 
-```jsx
-import { useBlockchain } from "./src/context/BlockchainContext";
+1.  Navigate to the **"Verify"** page.
+2.  Drag and drop or select the file you want to check.
+3.  The app locally computes its hash.
+4.  Click **"Verify"** to query the blockchain.
+5.  You will be redirected to a results page showing "Verification Successful" (with the timestamp and owner) or "Verification Failed" (if the record is not found).
 
-function MyComponent() {
-  const { currentAccount, connectWallet, proofChainContract, loading } =
-    useBlockchain();
+## Tech Stack
 
-  return (
-    <div>
-      <button onClick={connectWallet} disabled={loading}>
-        {currentAccount ? `錢包: ${currentAccount}` : "連接錢包"}
-      </button>
-      {/* 可以用 proofChainContract 與智能合約互動 */}
-    </div>
-  );
-}
-```
+- **Frontend:** [React](https://reactjs.org/) (with Hooks and Context API)
+- **Blockchain Interaction:** [Ethers.js](https://ethers.io/)
+- **Routing:** [React Router](https://reactrouter.com/)
+- **Styling:** CSS
+- **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+- **Smart Contract:** [Solidity](https://soliditylang.org/) (Deployed on Sepolia Testnet)
 
-#### 3. Context 提供內容
+## Future Roadmap
 
-- `currentAccount`：已連接的錢包地址（字串或 null）
-- `connectWallet()`：觸發 MetaMask 連線的函式
-- `proofChainContract`：Ethers.js 合約實例（可呼叫合約方法）
-- `loading`：連線/載入狀態布林值
-
-#### 4. proofChainContract 用法
-
-- `proofChainContract`是智能合約裡面的功能，有以下兩個用法
-
-  - `proofChainContract.storeProof(formattedHash)`用來上傳
-  - `proofChainContract.records(formattedHash)`用來驗證
-
-- `formattedHash`是在你把檔案 hash 過後前面要加上`0x`才能上傳，如下：
-  - `const formattedHash = '0x' + fileHash;`
-
----
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Development
-
-```bash
-npm run dev
-```
+- [] Implement **Multi-Party Attestation:** Integrate digital identity (e.g., DIDs or multi-sig) to allow two or more parties to co-attest a single file hash. This will cryptographically prove mutual agreement on a specific document version, resolving potential disputes over contract versions.
+- [] Integrate an AI feature to analyze legal contracts and provide suggestions before attestation.
