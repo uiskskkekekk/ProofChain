@@ -44,5 +44,5 @@ This "attestation" process creates an immutable record, enabling anyone to verif
 
 ## Future Roadmap
 
-- [] Implement **Multi-Party Attestation:** Integrate digital identity (e.g., DIDs or multi-sig) to allow two or more parties to co-attest a single file hash. This will cryptographically prove mutual agreement on a specific document version, resolving potential disputes over contract versions.
-- [] Integrate an AI feature to analyze legal contracts and provide suggestions before attestation.
+- [ ] Implement **Multi-Party Attestation:** Integrate digital identity (e.g., DIDs or multi-sig) to allow two or more parties to co-attest a single file hash. This will cryptographically prove mutual agreement on a specific document version, resolving potential disputes over contract versions.
+- [ ] Integrate an AI feature to analyze legal contracts and provide suggestions before attestation.
