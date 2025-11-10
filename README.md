@@ -2,6 +2,12 @@
 
 **Live Demo:** [**https://proofchain-9c0.pages.dev/**](https://proofchain-9c0.pages.dev/)
 
+> ### Live Demo Quick Start
+>
+> 1.  **Install Wallet:** You need a Web3 wallet like [MetaMask](https://metamask.io/) installed in your browser.
+> 2.  **Switch Network:** Please switch your wallet's network to the **Sepolia Testnet**.
+> 3.  **Get Test ETH:** You will need SepoliaETH (test currency) to pay for gas fees. You can get some from [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/).
+
 ProofChain is a decentralized application (DApp) that allows users to calculate a unique digital fingerprint (hash) for any digital file and permanently record this fingerprint, along with a timestamp, on a public blockchain.
 
 This "attestation" process creates an immutable record, enabling anyone to verify the file's state at a specific time in the future—all without needing to upload the file itself or reveal its contents.
